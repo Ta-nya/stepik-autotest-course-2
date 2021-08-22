@@ -2,15 +2,15 @@ import requests
 import pytest
 import csv
 
-
+#/home/tanya/PycharmProjects/stepik-autotest-course-2/softwaretesting_examples/csv_data.csv
 def read_data_from_csv():
     test_data = []
-    with open('softwaretesting_examples/csv_data.csv', newline='') as csvfile:
-        data = csv.reader(csvfile, delimiter='')
+    with open('csv_data.csv', newline='') as csvfile:
+        data = csv.reader(csvfile, delimiter=',')
         next(data) #skip header row
         for row in data:
             test_data.append(row)
-            return test_data
+    return test_data
 
 @pytest.mark.parametrize("country_code, zip_code, expected_place_name", read_data_from_csv())
 def test_using_csv_get_locations_data_check_place_name(country_code, zip_code, expected_place_name):
