@@ -24,3 +24,8 @@ def test_get_locations_for_us_90210_check_one_place_is_returned():
     response_body = response.json()
     assert len(response_body["places"]) == 1
 
+def test_get_location_state_name():
+    respose = requests.get("http://api.zippopotam.us/us/90210")
+    response_body = respose.json()
+    assert response_body["places"][0]['state'] == "California"
+
